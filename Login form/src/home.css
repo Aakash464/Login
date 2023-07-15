@@ -1,0 +1,22 @@
+.home-container{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    justify-content: center;
+}
+
+.home-details{
+
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    height: 80vh;
+    width: 75vh;
+    margin-top: 2%;
+}
+
+.batch-details{
+
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    height: 80vh;
+    width: 75vh;
+    margin-top: 2%;
+}
