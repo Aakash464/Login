@@ -23,6 +23,7 @@ function Login() {
                 navigate('/dashboard')
             }
             else{
+              console.log("Holla");
                 setError(res.data.Error)
             }
         })
