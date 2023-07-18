@@ -33,17 +33,27 @@ app.post("/login",(req,res)=>{
     con.query(sql,[req.body.email,req.body.password],(err,result)=>{
         if(err) return res.json({Status:"Error in Server", Error:"Error in Server"});
         if(result.length>0){
-            return res.json({Status:"Success"})
+            const token = jwt.sign({email : result[0].Name},"jwt-secret-key",{expiresIn:1000000000});
+            res.cookie('token',token);
+            return res.json({Status:"Success",email : result[0].Name})
         }
         else{
-            return res.json({Status:"Error", Error:"Wrong emaill or Password"})
+            return res.json({Status:"Error", Error:"Wrong email or Password"})
         }
     });
+})
+
+app.get("/dashboard/:email",(req,res)=>{
+    console.log(req.body.email)
+    const token = jwt.sign({id : req.body.email},"jwt-secret-key",{expiresIn:1000000000});
+    res.cookie('token',token);
+    return res.json({Status:"Success",id : req.body.email})
 })
 
 app.post("/signup",(req,res)=>{
     console.log(req.body);
     const sql = "INSERT INTO info (`Name`,`Username`,`Password`,`Age`) VALUES (?)";
+
     const formValues=[
         req.body.email,
         req.body.username,
@@ -57,6 +67,8 @@ app.post("/signup",(req,res)=>{
 
 
 })
+
+
 
 app.listen(8081,()=>{
     console.log('Runnning');

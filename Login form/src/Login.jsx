@@ -12,19 +12,22 @@ function Login() {
     })
 
     const navigate = useNavigate()
-
+   
     const [error,setError]= useState('')
 
     const handleSubmit=(event) =>{
         event.preventDefault();
         axios.post('http://localhost:8081/login',values)
         .then(res => {
+          
             if(res.data.Status === "Success"){
-                navigate('/dashboard')
+              const email = res.data.email;
+                navigate('/dashboard/'+email)
+              return(email);
             }
             else{
-              console.log("Holla");
-                setError(res.data.Error)
+              console.log("Hello");
+              setError(res.data.Error)
             }
         })
         .catch(err => console.log(err));
