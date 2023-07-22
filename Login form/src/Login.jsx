@@ -10,9 +10,9 @@ function Login() {
         email : '',
         password : ''
     })
-
+  
     const navigate = useNavigate()
-   
+    axios.defaults.withCredentials = true;
     const [error,setError]= useState('')
 
     const handleSubmit=(event) =>{
@@ -21,9 +21,9 @@ function Login() {
         .then(res => {
           
             if(res.data.Status === "Success"){
-              const email = res.data.email;
-                navigate('/dashboard/'+email)
-              return(email);
+
+              console.log(res)
+                navigate('/dashboard')
             }
             else{
               console.log("Hello");
