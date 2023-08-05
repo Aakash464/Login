@@ -21,7 +21,7 @@ function Home() {
        
       }
       else{
-        console.log(res)
+        alert("UnAuthorized")
       }
     })
   },[])
@@ -32,9 +32,11 @@ function Home() {
         {data.map((user,index)=>{
           return (
           <div key={index}>
+            <div className="details">
             <p>Name: {user.Name}</p>
             <p>UserName: {user.Username}</p>
             <p>Age: {user.Age}</p>
+            </div>
           </div>
          
           )

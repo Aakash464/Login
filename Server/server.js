@@ -109,5 +109,5 @@ app.get("/dashboard",verifyUser,(req,res)=>{
 
 
 app.listen(8081,()=>{
-    console.log('Runnning');
+    console.log('Running');
 })
